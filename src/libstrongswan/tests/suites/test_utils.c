@@ -877,8 +877,11 @@ static struct {
 	{"/0xff",		TRUE,  { 0, 0xff }},
 	{"/x",			FALSE, { 0 }},
 	{"x/x",			FALSE, { 0 }},
-	{"0xffffffff/0x0000ffff",	TRUE, { 0x0000ffff, 0x0000ffff }},
-	{"0xffffffff/0xffffffff",	TRUE, { 0xffffffff, 0xffffffff }},
+	{"0xfffffff0/0x0000ffff",	TRUE, { 0x0000fff0, 0x0000ffff }},
+	{"0xffffffff/0x0000ffff",	TRUE, { MARK_UNIQUE, 0x0000ffff }},
+	{"0xffffffff/0xffffffff",	TRUE, { MARK_UNIQUE, 0xffffffff }},
+	{"0xfffffffe/0x0000ffff",	TRUE, { MARK_UNIQUE_DIR, 0x0000ffff }},
+	{"0xfffffffe/0xffffffff",	TRUE, { MARK_UNIQUE_DIR, 0xffffffff }},
 };
 
 START_TEST(test_mark_from_string)
